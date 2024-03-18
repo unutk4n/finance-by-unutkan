@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
-
-def first():
+import datetime
+def first(): # root
     global root
     root = Tk()
     root.title("financeByUnutkan")
@@ -11,7 +11,7 @@ def first():
 
 
 
-def second():
+def second():# first frame
     global first_frame
     first_frame = ttk.Frame(
         root,
@@ -35,7 +35,7 @@ def minimize_screen(): # burasi pek onemli degil
     root.iconify()
 
 
-def options_screen():
+def options_screen():# option window 
     options_root = Tk()
     options_root.title("OPTIONS")
     #options_root.configure(background="black") # it's not working!
@@ -108,7 +108,7 @@ def on_change(b):
     a = b.widget.get() # we have to use the widget word or else it won't work.
     with open("profit.txt", "a") as f:
         z = 0
-        f.write(f"{a} TL\n")
+        f.write(f"{a} \n") # buranin sonuna tl koymustum ancak asagida bir fonskyon cagirdigimda int olarak almak gerekiyor.
     
 
 
@@ -130,9 +130,7 @@ asd.grid(
 a = StringVar()
 b = ttk.Entry(
     first_frame,
-    textvariable = a
-
-    
+    textvariable = a 
 )
 b.grid(
     column=1,
@@ -141,6 +139,7 @@ b.grid(
     padx=5,
     pady=5
 )
+
 def clear_text():
     b.delete(0,'end')
 
@@ -148,12 +147,42 @@ def clear_text():
 b.bind("<Return>", on_change)
 #b.bind("<Return>", clear_text)
 
+def show_sum_profit_def():
+    with open("profit.txt") as f:
+        try:
+            toplama = 0
+            for line in f:
+                toplama = toplama + int(line)
+                print(toplama)
+        except ValueError:
+            pass
 
-with open("profit.txt","r") as f:
-    deger = 0
-    for line in f:
-        deger = deger + int(line)
-    print(deger)
+show_sum_profit = ttk.Button(
+    first_frame,
+    text="SHOW SUM PROFIT",
+    command= show_sum_profit_def
+)
+show_sum_profit.grid(
+    column=2,
+    row=3,
+    padx=5,
+    pady=5
+)
+
+current_date = datetime.date.today()
+formatted_date = current_date.strftime("%d-%m-%Y")
+date_Label = ttk.Label(
+    first_frame,
+    text= formatted_date
+
+)
+date_Label.grid(
+    column=3,
+    row=3,
+    padx=5,
+    pady=5
+)
+
 
 
 

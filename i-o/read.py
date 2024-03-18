@@ -1,5 +1,3 @@
-with open('data.txt', 'a') as f:
-    
-    a = input("kar giriniz")
-    a = str(a)
-    f.write(f"{a}\n")
+with open("data.txt") as f:
+    for line in f:
+        print(line)
