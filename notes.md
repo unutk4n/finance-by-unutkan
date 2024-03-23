@@ -10,6 +10,7 @@ This is the standart Tkinter practice.
 However, because we've imported just ttk itself, we'll need to prefix anything inside that submodule.
 For example: Calling Entry() would refer to the Entry class inside the tkinter module(classic widget). We'd need ttk.Entry() to use the Entry class insde ttk (themed widget)
 
+# when other window gets opened closing the main windows doesn't effect the others. Why
 
 
 
