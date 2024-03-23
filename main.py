@@ -6,12 +6,13 @@ def first(): # root
     global root
     root = Tk()
     root.title("financeByUnutkan")
+    root.columnconfigure(0,weight=1)
+    root.rowconfigure(0,weight=1)
     # root.attributes("-zoomed", True) # you can also use fullscreen
     # root.configure(
     # background="black") # TUM ARKA PLANIN RENGINI DEGISTIRIYOR
 
-    root.columnconfigure(0, weight=1)
-    root.rowconfigure(0,weight=1)
+
 
 def second():# first frame
     global first_frame
@@ -27,8 +28,10 @@ def second():# first frame
         column=0,
         sticky=(N,W,E,S),
         
+        
         )
-def to_d0():
+
+def to_do():
     todo_root = Tk()
     todo_root.title("To Be Done")
     todo_frame = ttk.Frame(
@@ -81,7 +84,89 @@ def show_sum_profit_def():
                 toplama = toplama + int(line)
                 print(toplama)
         except ValueError:
-            pass
+            pass 
+
+def to_be_sent_def():
+    sent_def = Tk()
+    sent_def.title("NEREYE NE GIDECEK")
+    
+    nereye = ttk.Label(
+        sent_def,
+        text= "NEREYE GIDIYOR"
+        
+    )
+    nereye.grid(
+        column=0,
+        row=0,
+        padx=5,
+        pady=5
+    )
+    a = StringVar()
+    b = ttk.Combobox(
+        sent_def,
+        textvariable= a
+    )
+    b['values'] = ('ZIRAAT', 'GARANTI', 'VAKIF')
+
+    b.grid(
+        column=0,
+        row=1,
+        padx=5,
+        pady=5
+    )
+    b.state(["readonly"])
+
+    c = ttk.Label(
+        sent_def,
+        text= "NE GIDECEK"
+    )
+    c.grid(
+        row=0,
+        column=2,
+        padx=5,
+        pady=5
+    )
+    d = StringVar()
+    e = ttk.Combobox(
+        sent_def,
+        textvariable= d
+    )
+    e.grid(
+        row=1,
+        column=2,
+        padx=5,
+        pady=5
+    )
+    e['values'] = ('SU', 'EKMEK', 'PATATES')
+    e.state(["readonly"])
+
+    f = ttk.Label(
+        sent_def,
+        text="KAC ADET/MIKTAR"
+    )
+    f.grid(
+        row=0,
+        column=3,
+        padx=5,
+        pady=5
+    )
+    g = StringVar()
+    h = ttk.Combobox(
+        sent_def,
+        textvariable=g
+    )
+    h.grid(
+        column=3,
+        row=1,
+        padx=5,
+        pady=5
+    )
+    h['values'] = ('1','2','3')
+    h.state(["readonly"])
+
+
+
+    sent_def.mainloop()
 
 
 first()
@@ -197,7 +282,8 @@ show_sum_profit.grid(
 todo_button = ttk.Button(
     first_frame,
     text="TO DO",
-    command=to_d0
+    command=to_do
+
 )
 todo_button.grid(
     column=2,
@@ -220,6 +306,17 @@ date_Label.grid(
     pady=5
 )
 
+to_be_sent = ttk.Button(
+    first_frame,
+    text= "Nereye Ne Gidecek",
+    command = to_be_sent_def
+)
+to_be_sent.grid(
+    column=1,
+    row=4,
+    padx=5,
+    pady=5
+)
 
 
 
