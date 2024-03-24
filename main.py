@@ -44,7 +44,7 @@ def to_do():
         row=0,
         sticky=(N,W,E,S)
     )
-    todo_root.mainloop()
+    #todo_root.mainloop()
 def minimize_screen(): # burasi pek onemli degil
     root.iconify()
 
@@ -63,6 +63,7 @@ def options_screen():# option window
         row=0,
         sticky=(N,W,E,S)
     )
+
     options_root.mainloop()
 
 
@@ -89,9 +90,20 @@ def show_sum_profit_def():
 def to_be_sent_def():
     sent_def = Tk()
     sent_def.title("NEREYE NE GIDECEK")
-    
-    nereye = ttk.Label(
+
+    sent_def_frame = ttk.Frame(
         sent_def,
+        height=500,
+        width=550
+    )
+    sent_def_frame.grid(
+        column=0,
+        row=0,
+        sticky=(N,W,E,S)
+
+    )
+    nereye = ttk.Label(
+        sent_def_frame,
         text= "NEREYE GIDIYOR"
         
     )
@@ -103,7 +115,7 @@ def to_be_sent_def():
     )
     a = StringVar()
     b = ttk.Combobox(
-        sent_def,
+        sent_def_frame,
         textvariable= a
     )
     b['values'] = ('ZIRAAT', 'GARANTI', 'VAKIF')
@@ -117,7 +129,7 @@ def to_be_sent_def():
     b.state(["readonly"])
 
     c = ttk.Label(
-        sent_def,
+        sent_def_frame,
         text= "NE GIDECEK"
     )
     c.grid(
@@ -126,9 +138,10 @@ def to_be_sent_def():
         padx=5,
         pady=5
     )
+
     d = StringVar()
     e = ttk.Combobox(
-        sent_def,
+        sent_def_frame,
         textvariable= d
     )
     e.grid(
@@ -141,7 +154,7 @@ def to_be_sent_def():
     e.state(["readonly"])
 
     f = ttk.Label(
-        sent_def,
+        sent_def_frame,
         text="KAC ADET/MIKTAR"
     )
     f.grid(
@@ -152,7 +165,7 @@ def to_be_sent_def():
     )
     g = StringVar()
     h = ttk.Combobox(
-        sent_def,
+        sent_def_frame,
         textvariable=g
     )
     h.grid(
@@ -172,13 +185,14 @@ def to_be_sent_def():
 first()
 second()
 
+
 # CLASSLARDA ISIM DEGISIKLIGINE GITMEK DOGRU OLACAKTIR
 
 
 
 
 
-
+#1 ST WIDGET
 options_menu = ttk.Button(
     first_frame,
     text="Options",
@@ -186,51 +200,29 @@ options_menu = ttk.Button(
 
 )
 options_menu.grid(
-    column=1,
-    row=1,
+    column=0,
+    row=0,
     #sticky=(N,W,E,S),
     padx=5,
     pady=5,
     
 )
-
+# 2 ND WIDGET
 title_area = ttk.Label(
     first_frame,
     text="FINANCE BY UNUTK4N",
 
 )
 title_area.grid(
-    column=2,
-    row=1,
+    column=1,
+    row=0,
     #sticky=(N,W,E,S)
     padx=5,
     pady=5
 )
 
-minimize_button = ttk.Button(
-    first_frame,
-    text="--",
-    command = minimize_screen
-)
-minimize_button.grid(
-    column=3,
-    row=1,
-    #sticky=(N,W,E,S),
-    padx=5,
-    pady=5
-)
 
-resize_button = ttk.Button(
-    first_frame,
-    text="resize"
-)
-resize_button.grid(
-    column=4,
-    row=1,
-    #sticky=(N,W,E,S)
-    padx=5,
-    pady=5
-)
+
 
 
 
@@ -244,8 +236,8 @@ asd = ttk.Label(
     text="PROFIT BELOW"
 )
 asd.grid(
-    column=1,
-    row=2,
+    column=0,
+    row=1,
     padx=5,
     pady=5
 )
@@ -256,7 +248,7 @@ b = ttk.Entry(
     textvariable = a 
 )
 b.grid(
-    column=1,
+    column=0,
     row=3,
     #sticky=(W)
     padx=5,
@@ -287,7 +279,7 @@ todo_button = ttk.Button(
 )
 todo_button.grid(
     column=2,
-    row=2,
+    row=1,
     padx=5,
     pady=5
 )
@@ -300,8 +292,8 @@ date_Label = ttk.Label(
 
 )
 date_Label.grid(
-    column=3,
-    row=3,
+    column=2,
+    row=0,
     padx=5,
     pady=5
 )
@@ -313,7 +305,7 @@ to_be_sent = ttk.Button(
 )
 to_be_sent.grid(
     column=1,
-    row=4,
+    row=3,
     padx=5,
     pady=5
 )
@@ -323,4 +315,3 @@ to_be_sent.grid(
 
 
 root.mainloop()
-
